@@ -6,10 +6,19 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
+    [Header("Key Mapping")] 
+    public KeyCode jumpKey = KeyCode.Space;
+    
     [Header("Movement")] 
     public float maxSpeed;
     public float moveSpeed;
     public float groundDrag;
+    public float jumpForce;
+    public float jumpCooldown;
+    public float airMultiplier;
+    private bool canJump = true;
+    
+    private Vector3 flatVel;
     
     [Header("Ground Check")] 
     public float playerHeight;
@@ -45,10 +54,8 @@ public class PlayerMovement : MonoBehaviour
         }
         else
         {
-            rb.drag = groundDrag;
+            rb.drag = 0;
         }
-        
-        updateUI();
     }
 
     private void FixedUpdate()
@@ -60,17 +67,32 @@ public class PlayerMovement : MonoBehaviour
     {
         horizontalInput = Input.GetAxisRaw("Horizontal");
         verticalInput = Input.GetAxisRaw("Vertical");
+
+        if (Input.GetKey(jumpKey) && canJump && grounded)
+        {
+            canJump = false;
+            Jump();
+            Invoke(nameof(ResetJump), jumpCooldown);
+        }
     }
 
     private void MovePlayer()
     {
         moveDirection = orientation.forward * verticalInput + orientation.right * horizontalInput;
-        rb.AddForce(moveDirection.normalized * moveSpeed * 10f);
+        if (!grounded)
+        {
+            rb.AddForce(moveDirection.normalized * moveSpeed * 10f * airMultiplier, ForceMode.Force);
+        }
+        else if (grounded)
+        {
+            rb.AddForce(moveDirection.normalized * moveSpeed * 10f, ForceMode.Force);
+        }
+        UpdateUI();
     }
 
     private void SpeedControl()
     {
-        Vector3 flatVel = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
+        flatVel = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
 
         if (flatVel.magnitude > maxSpeed)
         {
@@ -79,8 +101,19 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    private void updateUI()
+    private void UpdateUI()
     {
-        //speed.text = $"Speed: {MathF.Abs(MathF.Ceiling((rb.velocity.x * rb.velocity.z) / 2))}";
+        speed.text = $"Speed: {Mathf.Ceil(flatVel.magnitude)}";
+    }
+
+    private void Jump()
+    {
+        rb.velocity = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
+        rb.AddForce(transform.up * jumpForce, ForceMode.Impulse);
+    }
+
+    private void ResetJump()
+    {
+        canJump = true;
     }
 }
