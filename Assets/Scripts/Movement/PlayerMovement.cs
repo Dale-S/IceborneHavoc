@@ -17,6 +17,9 @@ public class PlayerMovement : MonoBehaviour
     public float jumpCooldown;
     public float airMultiplier;
     private bool canJump = true;
+    public float grappleSpeed;
+    public bool grapple;
+    public float softcap;
     
     private Vector3 flatVel;
     
@@ -35,7 +38,17 @@ public class PlayerMovement : MonoBehaviour
     private Vector3 moveDirection;
 
     private Rigidbody rb;
-    
+
+    public MovementState state;
+
+    public enum MovementState
+    {
+        walking,
+        noMovement,
+        air,
+        jump,
+        grappling
+    }
     void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -46,8 +59,10 @@ public class PlayerMovement : MonoBehaviour
     {
         grounded = Physics.Raycast(transform.position, Vector3.down, playerHeight * 0.5f + 0.2f, ground);
         
+        StateHandler();
         PlayerInput();
         SpeedControl();
+
         if (grounded)
         {
             rb.drag = groundDrag;
@@ -75,7 +90,47 @@ public class PlayerMovement : MonoBehaviour
             Invoke(nameof(ResetJump), jumpCooldown);
         }
     }
-
+    
+    private void StateHandler()
+    {
+        //Walking state
+        if(grounded && (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.D)))
+        {
+            state = MovementState.walking;
+            if (flatVel.magnitude < 5)
+            {
+                maxSpeed = 5;
+            }
+            moveSpeed = 1;
+        }
+        
+        //Sliding across ice state
+        if (grounded && !(Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.D)))
+        {
+            state = MovementState.noMovement;
+            maxSpeed = softcap;
+        }
+        
+        //Air state
+        if (!grounded && !(Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.D)))
+        {
+            state = MovementState.air;
+            maxSpeed = softcap;
+        }
+        
+        //Jumping state
+        if (!grounded && (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.D)))
+        {
+            state = MovementState.jump;
+        }
+        
+        //Grappling state
+        if (grapple)
+        {
+            state = MovementState.grappling;
+            maxSpeed = softcap;
+        }
+    }
     private void MovePlayer()
     {
         moveDirection = orientation.forward * verticalInput + orientation.right * horizontalInput;
@@ -103,7 +158,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void UpdateUI()
     {
-        speed.text = $"Speed: {Mathf.Ceil(flatVel.magnitude)}";
+        speed.text = $"Speed: {Mathf.Ceil(flatVel.magnitude)} / {maxSpeed}";
     }
 
     private void Jump()
@@ -115,5 +170,10 @@ public class PlayerMovement : MonoBehaviour
     private void ResetJump()
     {
         canJump = true;
+    }
+
+    public void pullTowards(Vector3 grapplePoint)
+    {
+        rb.velocity = rb.velocity += new Vector3(grapplePoint.x - rb.position.x, (grapplePoint.y / 2) - rb.position.y, grapplePoint.z - rb.position.z) * grappleSpeed;  
     }
 }
