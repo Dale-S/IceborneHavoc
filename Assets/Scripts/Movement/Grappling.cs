@@ -5,12 +5,12 @@ using UnityEngine;
 
 public class Grappling : MonoBehaviour
 {
-    [Header("References")] 
-    //private PlayerMovementGrappling pmg;
+    [Header("References")]
     public Transform cam;
     public Transform kunaiStart;
     public LineRenderer lr;
     public PlayerMovement pm;
+    public Animator cross;
 
     [Header("Grapple Settings")] 
     public float maxGrappleDistance;
@@ -42,6 +42,15 @@ public class Grappling : MonoBehaviour
         if (grapplingCDTimer > 0)
         {
             grapplingCDTimer -= Time.deltaTime;
+        }
+        
+        if (Physics.Raycast(cam.position + cam.forward, cam.forward, maxGrappleDistance))
+        {
+            cross.Play("inRange");
+        }
+        else
+        {
+            cross.Play("Idle");
         }
     }
 
