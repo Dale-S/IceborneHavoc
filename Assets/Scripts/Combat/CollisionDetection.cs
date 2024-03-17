@@ -19,7 +19,6 @@ if(other.tag == "Enemy" && wc.IsAttacking)
     //Instantiate(HitParticle, new Vector3(other. transform-position.x, transform. position.y, other. transform.position.z), other. transform. rotation);
 }
 
-
 }
 
 
