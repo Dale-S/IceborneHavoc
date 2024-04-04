@@ -37,6 +37,11 @@ public class Swinging : MonoBehaviour
         {
             StopSwing();
         }
+
+        if (joint != null)
+        {
+            swingAdjust();
+        }
     }
     
     private void LateUpdate()
@@ -68,6 +73,27 @@ public class Swinging : MonoBehaviour
         }
 
         swinging = true;
+    }
+
+    private void swingAdjust()
+    {
+        //Debug.Log(Input.GetAxisRaw("Mouse ScrollWheel"));
+        if(Input.GetAxisRaw("Mouse ScrollWheel") > 0)
+        {
+            float distanceFromPoint = Vector3.Distance(transform.position, swingPoint) - 4f;
+            joint.maxDistance = distanceFromPoint * 0.8f;
+            joint.minDistance = distanceFromPoint * 0.25f;
+        } 
+        else if(Input.GetAxisRaw("Mouse ScrollWheel") < 0)
+        {
+            float extendedDistanceFromPoint = Vector3.Distance(transform.position, swingPoint);
+            if (extendedDistanceFromPoint <= maxSwingDistance)
+            {
+                extendedDistanceFromPoint = Vector3.Distance(transform.position, swingPoint) + 4f;
+            }
+            joint.maxDistance = extendedDistanceFromPoint * 0.8f;
+            joint.minDistance = extendedDistanceFromPoint * 0.25f;
+        }
     }
 
     private void StopSwing()
