@@ -25,11 +25,6 @@ public class Swinging : MonoBehaviour
     public KeyCode swingKey = KeyCode.Mouse1;
 
     private bool swinging;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
     // Update is called once per frame
     void Update()
@@ -77,7 +72,6 @@ public class Swinging : MonoBehaviour
 
     private void StopSwing()
     {
-        Debug.Log("Swing Stop");
         lr.positionCount = 0;
         Destroy(joint);
     }

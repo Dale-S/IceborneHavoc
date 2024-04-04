@@ -1,0 +1,52 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
+using Unity.VisualScripting;
+using UnityEngine;
+
+public class SpearThrow : MonoBehaviour
+{
+    [Header("References")] 
+    public GameObject spear;
+    public Transform spearStart;
+    private Rigidbody rb;
+    public Transform bodyTransform;
+    
+    
+    [Header("Key Mapping")]
+    public KeyCode spearKey = KeyCode.E;
+
+    [Header("Variables")] 
+    private static int numOfSpears = 3;
+    private IList<GameObject> spears = new GameObject[numOfSpears];
+    private int totalSpears = 0;
+    public float spearCoolDown;
+
+    private void Start()
+    {
+        rb = gameObject.GetComponent<Rigidbody>();
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        if (Input.GetKeyDown(spearKey))
+        {
+            shootSpear();
+        }
+    }
+
+    private void shootSpear()
+    {
+        totalSpears++;
+        int spot = totalSpears % 3;
+        Quaternion tempRot = Quaternion.LookRotation(spearStart.forward);
+        GameObject temp = Instantiate(spear, spearStart.position, tempRot);
+        GameObject tempSpear = spears[spot];
+        spears[spot] = temp;
+        //rb.AddForce(bodyTransform.forward * -2f, ForceMode.Impulse);
+        Destroy(tempSpear, 0.25f); // Time here can be adjusted for animations
+    }
+}
+
