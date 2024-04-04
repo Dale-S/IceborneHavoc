@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
@@ -20,7 +21,7 @@ public class PlayerMovement : MonoBehaviour
     public float grappleSpeed;
     public bool grapple;
     public float softcap;
-    
+
     private Vector3 flatVel;
     
     [Header("Ground Check")] 
@@ -174,6 +175,6 @@ public class PlayerMovement : MonoBehaviour
 
     public void pullTowards(Vector3 grapplePoint)
     {
-        rb.velocity = rb.velocity += new Vector3(grapplePoint.x - rb.position.x, (grapplePoint.y / 2) - rb.position.y, grapplePoint.z - rb.position.z) * grappleSpeed;  
+        rb.velocity = rb.velocity += new Vector3(grapplePoint.x - rb.position.x, 0, grapplePoint.z - rb.position.z) * grappleSpeed;  
     }
 }
