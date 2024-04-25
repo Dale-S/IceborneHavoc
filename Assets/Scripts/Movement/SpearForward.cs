@@ -10,6 +10,7 @@ public class SpearForward : MonoBehaviour
     //Variables 
     private Rigidbody rb;
     private bool snapped = false;
+    public ParticleSystem hitEffect;
     
     [Header("Spear Settings")] 
     public float spearSpeed;
@@ -23,21 +24,6 @@ public class SpearForward : MonoBehaviour
     void Update()
     {
         RaycastHit hit;
-        /*if (Physics.Raycast(gameObject.transform.position, gameObject.transform.forward, out hit, 2.25f))
-        {
-            rb.velocity = new Vector3(0, 0, 0);
-            rb.constraints = RigidbodyConstraints.FreezeAll;
-            if (snapped == false)
-            {
-                this.gameObject.transform.rotation = Quaternion.LookRotation(hit.normal);
-                snapped = true;
-                this.gameObject.transform.GetChild(0).tag = "Spear";
-                this.gameObject.GetComponentInChildren<CapsuleCollider>().enabled = true;
-                this.gameObject.GetComponentInChildren<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
-                this.gameObject.GetComponentInChildren<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
-            }
-        }*/
-
         if (Physics.BoxCast(gameObject.transform.position, new Vector3(0.002f, 0.002f, 0.002f), gameObject.transform.forward, out hit, gameObject.transform.rotation, 2.25f))
         {
             rb.velocity = new Vector3(0, 0, 0);
@@ -50,6 +36,7 @@ public class SpearForward : MonoBehaviour
                 this.gameObject.GetComponentInChildren<CapsuleCollider>().enabled = true;
                 this.gameObject.GetComponentInChildren<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
                 this.gameObject.GetComponentInChildren<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
+                hitEffect.Play();
             }
         }
         else

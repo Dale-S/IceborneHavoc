@@ -12,6 +12,11 @@ public class Swinging : MonoBehaviour
     public Transform player;
     private SpringJoint joint;
     private Vector3 currentGrapplePosition;
+    public GameObject kunai;
+    public GameObject hitEffect;
+    private GameObject currKunai;
+    private GameObject currImpact;
+    public AudioSource swingingSound;
 
     [Header("Swinging Settings")] 
     public float maxSwingDistance = 30f;
@@ -55,6 +60,9 @@ public class Swinging : MonoBehaviour
         if (Physics.Raycast(cam.position, cam.forward, out hit, maxSwingDistance))
         {
             swingPoint = hit.point;
+            swingingSound.Play();
+            currKunai = Instantiate(kunai, swingPoint, Quaternion.LookRotation(cam.forward));
+            currImpact = Instantiate(hitEffect, swingPoint, Quaternion.identity);
             joint = player.gameObject.AddComponent<SpringJoint>();
             joint.autoConfigureConnectedAnchor = false;
             joint.connectedAnchor = swingPoint;
@@ -98,6 +106,9 @@ public class Swinging : MonoBehaviour
 
     private void StopSwing()
     {
+        swingingSound.Stop();
+        Destroy(currKunai);
+        Destroy(currImpact);
         lr.positionCount = 0;
         Destroy(joint);
     }
@@ -107,6 +118,6 @@ public class Swinging : MonoBehaviour
         if (!joint) return;
         
         lr.SetPosition(0, kunaiStart.position);
-        lr.SetPosition(1, swingPoint);
+        lr.SetPosition(1, swingPoint - (cam.forward / 4));
     }
 }

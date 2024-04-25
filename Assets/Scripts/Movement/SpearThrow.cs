@@ -12,6 +12,8 @@ public class SpearThrow : MonoBehaviour
     public Transform spearStart;
     private Rigidbody rb;
     public Transform bodyTransform;
+    public ParticleSystem sigil;
+    public AudioSource charge;
     
     
     [Header("Key Mapping")]
@@ -22,6 +24,7 @@ public class SpearThrow : MonoBehaviour
     private IList<GameObject> spears = new GameObject[numOfSpears];
     private int totalSpears = 0;
     public float spearCoolDown;
+    private float cd = 0;
 
     private void Start()
     {
@@ -31,9 +34,19 @@ public class SpearThrow : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (cd > 0)
+        {
+            cd -= 1 * Time.deltaTime;
+        }
         if (Input.GetKeyDown(spearKey))
         {
-            shootSpear();
+            if (cd <= 0)
+            {
+                sigil.Play();
+                charge.Play();
+                Invoke(nameof(shootSpear),1f);
+                cd = spearCoolDown;
+            }
         }
     }
 

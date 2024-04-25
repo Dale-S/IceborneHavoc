@@ -28,7 +28,13 @@ public class PlayerMovement : MonoBehaviour
     public float playerHeight;
     public Transform orientation;
     public LayerMask ground;
-    private bool grounded;
+    public bool grounded;
+    public ParticleSystem slideEffect;
+    public AudioSource slidingSound;
+    private bool sliding = false;
+    private bool inAir = false;
+    public AudioSource airEffect;
+    public AudioSource landingEffect;
 
     [Header("UI References")] 
     public TextMeshProUGUI speed;
@@ -63,7 +69,7 @@ public class PlayerMovement : MonoBehaviour
         StateHandler();
         PlayerInput();
         SpeedControl();
-
+        
         if (grounded)
         {
             rb.drag = groundDrag;
@@ -71,6 +77,40 @@ public class PlayerMovement : MonoBehaviour
         else
         {
             rb.drag = 0;
+        }
+
+        if (grounded && flatVel.magnitude > 5)
+        {
+            if (sliding == false)
+            {
+                slideEffect.Play();
+                slidingSound.Play();
+                sliding = true;
+            }
+        }
+        else
+        {
+            slideEffect.Stop();
+            slidingSound.Stop();
+            sliding = false;
+        }
+
+        if (!grounded && flatVel.magnitude > 5)
+        {
+            if (inAir == false)
+            {
+                airEffect.Play();
+                inAir = true;
+            }
+        }
+        else
+        {
+            if (inAir == true)
+            {
+                landingEffect.Play();
+                airEffect.Stop();
+                inAir = false;
+            }
         }
     }
 
