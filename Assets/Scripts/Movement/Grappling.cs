@@ -11,7 +11,11 @@ public class Grappling : MonoBehaviour
     public LineRenderer lr;
     public PlayerMovement pm;
     public Animator cross;
-
+    public GameObject kunai;
+    public GameObject hitEffect;
+    private GameObject currKunai;
+    private GameObject currImpact;
+    
     [Header("Grapple Settings")] 
     public float maxGrappleDistance;
     public float grappleDelayTime;
@@ -75,6 +79,8 @@ public class Grappling : MonoBehaviour
         if (Physics.Raycast(cam.position, cam.forward, out hit, maxGrappleDistance))
         {
             grapplePoint = hit.point;
+            currKunai = Instantiate(kunai, grapplePoint, Quaternion.LookRotation(cam.forward));
+            currImpact = Instantiate(hitEffect, grapplePoint, Quaternion.identity);
             Invoke(nameof(ExecuteGrapple), grappleDelayTime);
         }
         else
@@ -84,7 +90,7 @@ public class Grappling : MonoBehaviour
         }
 
         lr.enabled = true;
-        lr.SetPosition(1, grapplePoint);
+        lr.SetPosition(1, grapplePoint - (cam.forward / 2));
     }
 
     private void ExecuteGrapple()
@@ -98,6 +104,8 @@ public class Grappling : MonoBehaviour
     {
         grappling = false;
         grapplingCDTimer = grapplingCD;
+        Destroy(currKunai);
+        Destroy(currImpact);
         lr.enabled = false;
         pm.grapple = false;
     }
