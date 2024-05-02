@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Spear
   - SpearDetector
+  - Enemy
   layers:
   - Default
   - TransparentFX

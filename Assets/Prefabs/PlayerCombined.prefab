@@ -189,6 +189,14 @@ PrefabInstance:
       propertyPath: grappleDelayTime
       value: 0.2
       objectReference: {fileID: 0}
+    - target: {fileID: 7917233812779279627, guid: 6338ac75cc7146242abcff8ddea3c507, type: 3}
+      propertyPath: PM
+      value: 
+      objectReference: {fileID: 246193006003830886}
+    - target: {fileID: 7917233812779279627, guid: 6338ac75cc7146242abcff8ddea3c507, type: 3}
+      propertyPath: cam
+      value: 
+      objectReference: {fileID: 8266193551645112111}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -199,6 +207,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3851055668192927916, guid: 6338ac75cc7146242abcff8ddea3c507, type: 3}
   m_PrefabInstance: {fileID: 3769835929327281500}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &246193006003830886 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3979918671203394874, guid: 6338ac75cc7146242abcff8ddea3c507, type: 3}
+  m_PrefabInstance: {fileID: 3769835929327281500}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c37f455f47d9e294b958aea8cb86cee8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &1375926741932669421 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2830903624787680433, guid: 6338ac75cc7146242abcff8ddea3c507, type: 3}
@@ -554,6 +573,11 @@ AudioSource:
 --- !u!4 &7990257332992323412 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6096286035425120296, guid: ca28f95b54fc2be4e99af0f4d40333a9, type: 3}
+  m_PrefabInstance: {fileID: 4213473058763571068}
+  m_PrefabAsset: {fileID: 0}
+--- !u!20 &8266193551645112111 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 5246174946306656339, guid: ca28f95b54fc2be4e99af0f4d40333a9, type: 3}
   m_PrefabInstance: {fileID: 4213473058763571068}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &8681519618676391357 stripped

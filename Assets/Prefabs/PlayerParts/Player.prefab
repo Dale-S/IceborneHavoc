@@ -261,6 +261,7 @@ GameObject:
   - component: {fileID: 5626958442475816194}
   - component: {fileID: 1328347265550788494}
   - component: {fileID: 3218961292305210559}
+  - component: {fileID: 7917233812779279627}
   m_Layer: 2
   m_Name: Player
   m_TagString: Player
@@ -341,6 +342,7 @@ MonoBehaviour:
   grappleSpeed: 1.5
   grapple: 0
   softcap: 30
+  currSpeed: 0
   playerHeight: 2
   orientation: {fileID: 2830903624787680433}
   ground:
@@ -418,6 +420,22 @@ MonoBehaviour:
   charge: {fileID: 0}
   spearKey: 101
   spearCoolDown: 0
+--- !u!114 &7917233812779279627
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1339636879275875525}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2fe73b145a3be149a1c965324cc03a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseDamage: 10
+  attackKey: 323
+  PM: {fileID: 0}
+  cam: {fileID: 0}
 --- !u!1 &2333981306909932607
 GameObject:
   m_ObjectHideFlags: 0

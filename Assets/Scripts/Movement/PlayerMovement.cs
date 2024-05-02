@@ -23,6 +23,7 @@ public class PlayerMovement : MonoBehaviour
     public float softcap;
 
     private Vector3 flatVel;
+    public float currSpeed;
     
     [Header("Ground Check")] 
     public float playerHeight;
@@ -189,7 +190,8 @@ public class PlayerMovement : MonoBehaviour
     private void SpeedControl()
     {
         flatVel = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
-
+        currSpeed = flatVel.magnitude;
+        
         if (flatVel.magnitude > maxSpeed)
         {
             Vector3 limitedVel = flatVel.normalized * maxSpeed;
