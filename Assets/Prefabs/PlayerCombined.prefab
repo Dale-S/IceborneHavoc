@@ -146,9 +146,21 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3979918671203394874, guid: 6338ac75cc7146242abcff8ddea3c507, type: 3}
+      propertyPath: PA
+      value: 
+      objectReference: {fileID: 6453253617614127191}
+    - target: {fileID: 3979918671203394874, guid: 6338ac75cc7146242abcff8ddea3c507, type: 3}
+      propertyPath: inAttack
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3979918671203394874, guid: 6338ac75cc7146242abcff8ddea3c507, type: 3}
       propertyPath: airEffect
       value: 
       objectReference: {fileID: 1608156734899836331}
+    - target: {fileID: 3979918671203394874, guid: 6338ac75cc7146242abcff8ddea3c507, type: 3}
+      propertyPath: hammerAnim
+      value: 
+      objectReference: {fileID: 6520331197688425795}
     - target: {fileID: 3979918671203394874, guid: 6338ac75cc7146242abcff8ddea3c507, type: 3}
       propertyPath: slideEffect
       value: 
@@ -178,6 +190,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 8681519618676391357}
     - target: {fileID: 5626958442475816194, guid: 6338ac75cc7146242abcff8ddea3c507, type: 3}
+      propertyPath: hammer
+      value: 
+      objectReference: {fileID: 7459089409751886105}
+    - target: {fileID: 5626958442475816194, guid: 6338ac75cc7146242abcff8ddea3c507, type: 3}
       propertyPath: hitEffect
       value: 
       objectReference: {fileID: 3914125200538053228, guid: 3735e5c034e492f4d9eeb9823bd16e2c, type: 3}
@@ -197,6 +213,18 @@ PrefabInstance:
       propertyPath: cam
       value: 
       objectReference: {fileID: 8266193551645112111}
+    - target: {fileID: 7917233812779279627, guid: 6338ac75cc7146242abcff8ddea3c507, type: 3}
+      propertyPath: headAnim
+      value: 
+      objectReference: {fileID: 5007057934169316126}
+    - target: {fileID: 7917233812779279627, guid: 6338ac75cc7146242abcff8ddea3c507, type: 3}
+      propertyPath: hammerAnim
+      value: 
+      objectReference: {fileID: 6520331197688425795}
+    - target: {fileID: 7917233812779279627, guid: 6338ac75cc7146242abcff8ddea3c507, type: 3}
+      propertyPath: breakEffect
+      value: 
+      objectReference: {fileID: 8034479184539392117}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -243,6 +271,17 @@ ParticleSystem:
   m_CorrespondingSourceObject: {fileID: 8781496711107564019, guid: 6338ac75cc7146242abcff8ddea3c507, type: 3}
   m_PrefabInstance: {fileID: 3769835929327281500}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &6453253617614127191 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7917233812779279627, guid: 6338ac75cc7146242abcff8ddea3c507, type: 3}
+  m_PrefabInstance: {fileID: 3769835929327281500}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2fe73b145a3be149a1c965324cc03a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!82 &7271538375584517828 stripped
 AudioSource:
   m_CorrespondingSourceObject: {fileID: 5816562117613497240, guid: 6338ac75cc7146242abcff8ddea3c507, type: 3}
@@ -336,6 +375,10 @@ PrefabInstance:
       propertyPath: cameraPosition
       value: 
       objectReference: {fileID: 3801331980970557229}
+    - target: {fileID: 9152976654580147298, guid: ca28f95b54fc2be4e99af0f4d40333a9, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 9a37056a5b7bafc46a042150bc452279, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 7570448464872042977, guid: ca28f95b54fc2be4e99af0f4d40333a9, type: 3}
@@ -356,6 +399,21 @@ LineRenderer:
 --- !u!198 &3809005195503404501 stripped
 ParticleSystem:
   m_CorrespondingSourceObject: {fileID: 1055264424054422185, guid: ca28f95b54fc2be4e99af0f4d40333a9, type: 3}
+  m_PrefabInstance: {fileID: 4213473058763571068}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &5007057934169316126 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 9152976654580147298, guid: ca28f95b54fc2be4e99af0f4d40333a9, type: 3}
+  m_PrefabInstance: {fileID: 4213473058763571068}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &6520331197688425795 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 6919109858308018751, guid: ca28f95b54fc2be4e99af0f4d40333a9, type: 3}
+  m_PrefabInstance: {fileID: 4213473058763571068}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &7459089409751886105 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6772641020638418533, guid: ca28f95b54fc2be4e99af0f4d40333a9, type: 3}
   m_PrefabInstance: {fileID: 4213473058763571068}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &7547989872250762572 stripped
@@ -573,6 +631,11 @@ AudioSource:
 --- !u!4 &7990257332992323412 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6096286035425120296, guid: ca28f95b54fc2be4e99af0f4d40333a9, type: 3}
+  m_PrefabInstance: {fileID: 4213473058763571068}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &8034479184539392117 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 6195113964011677449, guid: ca28f95b54fc2be4e99af0f4d40333a9, type: 3}
   m_PrefabInstance: {fileID: 4213473058763571068}
   m_PrefabAsset: {fileID: 0}
 --- !u!20 &8266193551645112111 stripped

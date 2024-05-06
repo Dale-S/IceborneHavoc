@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -46,8 +47,9 @@ public class PlayerMovement : MonoBehaviour
     private Vector3 moveDirection;
 
     private Rigidbody rb;
-
     public MovementState state;
+    public Animator hammerAnim;
+    public PlayerAttack PA;
 
     public enum MovementState
     {
@@ -96,7 +98,7 @@ public class PlayerMovement : MonoBehaviour
             sliding = false;
         }
 
-        if (!grounded && flatVel.magnitude > 5)
+        if (!grounded && flatVel.magnitude >= 6)
         {
             if (inAir == false)
             {
@@ -111,6 +113,11 @@ public class PlayerMovement : MonoBehaviour
                 landingEffect.Play();
                 airEffect.Stop();
                 inAir = false;
+                if (!PA.inAttack)
+                {
+                    hammerAnim.Play("fall");
+                    Invoke(nameof(backToIdle), 0.42f);
+                }
             }
         }
     }
@@ -218,5 +225,10 @@ public class PlayerMovement : MonoBehaviour
     public void pullTowards(Vector3 grapplePoint)
     {
         rb.velocity = rb.velocity += new Vector3(grapplePoint.x - rb.position.x, 0, grapplePoint.z - rb.position.z) * grappleSpeed;  
+    }
+
+    private void backToIdle()
+    {
+        hammerAnim.Play("Idle");
     }
 }
