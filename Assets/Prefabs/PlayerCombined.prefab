@@ -225,6 +225,10 @@ PrefabInstance:
       propertyPath: breakEffect
       value: 
       objectReference: {fileID: 8034479184539392117}
+    - target: {fileID: 7917233812779279627, guid: 6338ac75cc7146242abcff8ddea3c507, type: 3}
+      propertyPath: hammerSound
+      value: 
+      objectReference: {fileID: 1251627312618910197}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -391,6 +395,11 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 8093571372591501917}
   m_SourcePrefab: {fileID: 100100000, guid: ca28f95b54fc2be4e99af0f4d40333a9, type: 3}
+--- !u!82 &1251627312618910197 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 3109716870422613641, guid: ca28f95b54fc2be4e99af0f4d40333a9, type: 3}
+  m_PrefabInstance: {fileID: 4213473058763571068}
+  m_PrefabAsset: {fileID: 0}
 --- !u!120 &1893289749477368115 stripped
 LineRenderer:
   m_CorrespondingSourceObject: {fileID: 2323597453556407887, guid: ca28f95b54fc2be4e99af0f4d40333a9, type: 3}

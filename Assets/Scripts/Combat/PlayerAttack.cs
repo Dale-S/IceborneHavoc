@@ -16,6 +16,7 @@ public class PlayerAttack : MonoBehaviour
     private float CDtimer = 0f;
     public ParticleSystem breakEffect;
     public bool inAttack = false;
+    public AudioSource hammerSound;
 
     private void Update()
     {
@@ -33,6 +34,7 @@ public class PlayerAttack : MonoBehaviour
     private void attack()
     {
         hammerAnim.Play("Swing");
+        hammerSound.Play();
         RaycastHit hit;
         if (Physics.BoxCast(gameObject.transform.position, new Vector3(5.5f, 1.5f, 1.5f), cam.transform.forward, out hit, gameObject.transform.rotation, 5f))
         {
