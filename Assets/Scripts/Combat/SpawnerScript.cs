@@ -30,19 +30,15 @@ public class SpawnerScript : MonoBehaviour
         {
             return;
         }
-        Debug.Log("made it past return");
         
         if (timer <= 0)
         {
-            Debug.Log("inside timer");
             if (nEnemy)
             {
-                Debug.Log("inside new Enemy");
                 numToSpawn = numOfType[i];
                 nEnemy = false;
             }
             currentEnemy = Instantiate(enemies[i], enemySpawn.position, enemySpawn.rotation);
-            Debug.Log(currentEnemy);
             currentEnemy.GetComponent<EnemyMovement>().setSpawn(enemySpawn);
             if (numToSpawn <= 0)
             {

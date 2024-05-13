@@ -9,6 +9,7 @@ public class EnemyMovement : MonoBehaviour
     public Rigidbody rb;
     public float moveSpeed;
     public int moveCycles;
+    public int chaseCycles = 1;
     private float moveTimer;
     public float moveTime;
     private Transform spawnPoint;
@@ -18,11 +19,13 @@ public class EnemyMovement : MonoBehaviour
     private bool turning = false;
     private Vector3 flatVel;
     private int i;
+    private Transform player;
     
     private void Awake()
     {
         moveForward();
         moveTimer = moveTime;
+        player = GameObject.Find("PlayerCombined").gameObject.transform.GetChild(1);
     }
 
     private void Update()
@@ -52,6 +55,15 @@ public class EnemyMovement : MonoBehaviour
                     moveTimer = moveTime;
                 }
             }
+        }
+        else if (inChase && moveTimer <= 0)
+        {
+            Vector3 from = new Vector3(transform.position.x, 2f, transform.position.z);
+            Vector3 to = new Vector3(player.position.x, 2f, player.position.z);
+            Quaternion lookTo = Quaternion.LookRotation((to - from).normalized);
+            rb.MoveRotation(lookTo);
+            Invoke(nameof(moveForwardChase), 0.25f);
+            moveTimer = 1f;
         }
         
         moveTimer -= 1 * Time.deltaTime;
@@ -100,6 +112,21 @@ public class EnemyMovement : MonoBehaviour
             turn45();
             i++;
             moveTimer = 0.25f;
+        }
+    }
+
+    public void setChase(bool state)
+    {
+        inChase = state;
+        Debug.Log($"Currently In Chase: {inChase}");
+    }
+
+    private void moveForwardChase()
+    {
+        rb.velocity = new Vector3(0, 0, 0);
+        for (int i = 0; i < chaseCycles; i++)
+        {
+            rb.AddForce(transform.forward.normalized * moveSpeed * 1f, ForceMode.VelocityChange);
         }
     }
 }

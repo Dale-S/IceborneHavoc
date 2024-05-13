@@ -262,7 +262,7 @@ GameObject:
   - component: {fileID: 1328347265550788494}
   - component: {fileID: 3218961292305210559}
   - component: {fileID: 7917233812779279627}
-  m_Layer: 2
+  m_Layer: 7
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -355,6 +355,8 @@ MonoBehaviour:
   landingEffect: {fileID: 0}
   speed: {fileID: 0}
   state: 0
+  hammerAnim: {fileID: 0}
+  PA: {fileID: 0}
 --- !u!114 &5626958442475816194
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -436,6 +438,12 @@ MonoBehaviour:
   attackKey: 323
   PM: {fileID: 0}
   cam: {fileID: 0}
+  hammerAnim: {fileID: 0}
+  headAnim: {fileID: 0}
+  attackCD: 1
+  breakEffect: {fileID: 0}
+  inAttack: 0
+  hammerSound: {fileID: 0}
 --- !u!1 &2333981306909932607
 GameObject:
   m_ObjectHideFlags: 0
@@ -896,7 +904,7 @@ GameObject:
   - component: {fileID: 4823730421308042245}
   m_Layer: 2
   m_Name: Body
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
