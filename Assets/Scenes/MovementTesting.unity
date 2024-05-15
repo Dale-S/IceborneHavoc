@@ -485,7 +485,7 @@ PrefabInstance:
       objectReference: {fileID: -4853652237922321208, guid: 731ed2260df38e34d9c7856b91c14891, type: 3}
     - target: {fileID: 9081191239330315475, guid: 731ed2260df38e34d9c7856b91c14891, type: 3}
       propertyPath: numOfEnemies
-      value: 1
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 9081191239330315475, guid: 731ed2260df38e34d9c7856b91c14891, type: 3}
       propertyPath: enemies.Array.size
@@ -4828,6 +4828,10 @@ PrefabInstance:
     - target: {fileID: 2499480050314481643, guid: 6fd36c74fe22e2c449bd1bc1b4526385, type: 3}
       propertyPath: playOnAwake
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2501385595461313505, guid: 6fd36c74fe22e2c449bd1bc1b4526385, type: 3}
+      propertyPath: playerHealth
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 3588827722467260247, guid: 6fd36c74fe22e2c449bd1bc1b4526385, type: 3}
       propertyPath: m_Enabled
