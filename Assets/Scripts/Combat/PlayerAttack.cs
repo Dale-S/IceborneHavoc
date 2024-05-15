@@ -15,8 +15,9 @@ public class PlayerAttack : MonoBehaviour
     public float attackCD = 1f;
     private float CDtimer = 0f;
     public ParticleSystem breakEffect;
-    public bool inAttack = false;
+    public bool inAttack = false; // For animation
     public AudioSource hammerSound;
+    private bool attacking = false; // For damage dealing
 
     private void Update()
     {
@@ -35,24 +36,26 @@ public class PlayerAttack : MonoBehaviour
     {
         hammerAnim.Play("Swing");
         hammerSound.Play();
-        RaycastHit hit;
-        if (Physics.BoxCast(gameObject.transform.position, new Vector3(5.5f, 1.5f, 1.5f), cam.transform.forward, out hit, gameObject.transform.rotation, 5f))
-        {
-            if (hit.transform.gameObject.CompareTag("Enemy"))
-            {
-                if (PM.currSpeed >= 20)
-                {
-                    headAnim.Play("break");
-                    breakEffect.Play();
-                    Invoke(nameof(backToHeadIdle), 1f);
-                }
-                hit.transform.GetComponent<EnemyHealth>().dealDamage(baseDamage + (baseDamage * (PM.currSpeed / 10)));
-            }
-        }
         Invoke(nameof(backToIdle), 0.85f);
         inAttack = true;
+        attacking = true;
     }
-    
+
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.transform.gameObject.CompareTag("Enemy") && attacking)
+        {
+            if (PM.currSpeed >= 20)
+            {
+                headAnim.Play("break");
+                breakEffect.Play();
+                Invoke(nameof(backToHeadIdle), 1f);
+            }
+            other.transform.GetComponent<EnemyHealth>().dealDamage(baseDamage + (baseDamage * (PM.currSpeed / 10)));
+            attacking = false;
+        }
+    }
+
     private void backToIdle()
     {
         hammerAnim.Play("Idle");

@@ -40,7 +40,7 @@ public class PlayerMovement : MonoBehaviour
 
     [Header("UI References")] 
     public TextMeshProUGUI speed;
-
+    public Camera cam;
     private float horizontalInput;
     private float verticalInput;
 

@@ -12,6 +12,8 @@ public class EnemyHealth : MonoBehaviour
     private float MaxHealth;
     public Slider slider;
     public TextMeshProUGUI healthText;
+    private float timer = 0;
+    private float damageDebounce = 0.25f;
 
     private void Start()
     {
@@ -29,6 +31,8 @@ public class EnemyHealth : MonoBehaviour
             //Play animation or effect here
             Invoke(nameof(destroyEnemy), 0.15f);
         }
+
+        timer -= 1 * Time.deltaTime;
     }
 
     private void destroyEnemy()
@@ -38,6 +42,10 @@ public class EnemyHealth : MonoBehaviour
 
     public void dealDamage(float damage)
     {
-        Health -= damage;
+        if (timer <= 0)
+        {
+            Health -= damage;
+            timer = damageDebounce;
+        }
     }
 }
