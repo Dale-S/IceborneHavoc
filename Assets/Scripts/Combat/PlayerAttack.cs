@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class PlayerAttack : MonoBehaviour
 {
@@ -18,6 +19,10 @@ public class PlayerAttack : MonoBehaviour
     public bool inAttack = false; // For animation
     public AudioSource hammerSound;
     private bool attacking = false; // For damage dealing
+    public AudioClip Bone1;
+    public AudioClip Bone2;
+    public AudioSource HitSound;
+    public AudioSource CritSound;
 
     private void Update()
     {
@@ -45,12 +50,25 @@ public class PlayerAttack : MonoBehaviour
     {
         if (other.transform.gameObject.CompareTag("Enemy") && attacking)
         {
+            int soundNum = Random.Range(0, 2);
             if (PM.currSpeed >= 20)
             {
                 headAnim.Play("break");
                 breakEffect.Play();
+                CritSound.Play();
                 Invoke(nameof(backToHeadIdle), 1f);
             }
+
+            if (soundNum == 0)
+            {
+                HitSound.clip = Bone1;
+            }
+            else if (soundNum == 1)
+            {
+                HitSound.clip = Bone2;
+            }
+            
+            HitSound.Play();
             other.transform.GetComponent<EnemyHealth>().dealDamage(baseDamage + (baseDamage * (PM.currSpeed / 10)));
             attacking = false;
         }

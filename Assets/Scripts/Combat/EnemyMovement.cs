@@ -20,6 +20,7 @@ public class EnemyMovement : MonoBehaviour
     private Vector3 flatVel;
     private int i;
     private Transform player;
+    public EnemyHealth EH;
     
     private void Awake()
     {
@@ -30,6 +31,10 @@ public class EnemyMovement : MonoBehaviour
 
     private void Update()
     {
+        if (EH.dead)
+        {
+            return;
+        }
         RaycastHit hit;
         distance = Vector3.Distance(transform.position, spawnPoint.transform.position);
         if (moveTimer <= 0 && !inChase)

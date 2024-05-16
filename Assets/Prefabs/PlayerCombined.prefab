@@ -161,6 +161,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3979918671203394874, guid: 6338ac75cc7146242abcff8ddea3c507, type: 3}
+      propertyPath: PA
+      value: 
+      objectReference: {fileID: 4035422873155210103}
+    - target: {fileID: 3979918671203394874, guid: 6338ac75cc7146242abcff8ddea3c507, type: 3}
       propertyPath: cam
       value: 
       objectReference: {fileID: 8266193551645112111}
@@ -317,9 +321,25 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 8266193551645112111}
     - target: {fileID: 178438456578470923, guid: ca28f95b54fc2be4e99af0f4d40333a9, type: 3}
+      propertyPath: Bone1
+      value: 
+      objectReference: {fileID: 8300000, guid: 0bf7e386a8a26f94ca6d804df0d84ff4, type: 3}
+    - target: {fileID: 178438456578470923, guid: ca28f95b54fc2be4e99af0f4d40333a9, type: 3}
+      propertyPath: Bone2
+      value: 
+      objectReference: {fileID: 8300000, guid: 0e4c6d595f2778b41b2fa722c066ed64, type: 3}
+    - target: {fileID: 178438456578470923, guid: ca28f95b54fc2be4e99af0f4d40333a9, type: 3}
+      propertyPath: HitSound
+      value: 
+      objectReference: {fileID: 4377154055234983456}
+    - target: {fileID: 178438456578470923, guid: ca28f95b54fc2be4e99af0f4d40333a9, type: 3}
       propertyPath: headAnim
       value: 
       objectReference: {fileID: 5007057934169316126}
+    - target: {fileID: 178438456578470923, guid: ca28f95b54fc2be4e99af0f4d40333a9, type: 3}
+      propertyPath: CritSound
+      value: 
+      objectReference: {fileID: 4734382362325215403}
     - target: {fileID: 178438456578470923, guid: ca28f95b54fc2be4e99af0f4d40333a9, type: 3}
       propertyPath: hammerAnim
       value: 
@@ -462,6 +482,27 @@ BoxCollider:
 --- !u!198 &3809005195503404501 stripped
 ParticleSystem:
   m_CorrespondingSourceObject: {fileID: 1055264424054422185, guid: ca28f95b54fc2be4e99af0f4d40333a9, type: 3}
+  m_PrefabInstance: {fileID: 4213473058763571068}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &4035422873155210103 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 178438456578470923, guid: ca28f95b54fc2be4e99af0f4d40333a9, type: 3}
+  m_PrefabInstance: {fileID: 4213473058763571068}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2fe73b145a3be149a1c965324cc03a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!82 &4377154055234983456 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 488505320834263388, guid: ca28f95b54fc2be4e99af0f4d40333a9, type: 3}
+  m_PrefabInstance: {fileID: 4213473058763571068}
+  m_PrefabAsset: {fileID: 0}
+--- !u!82 &4734382362325215403 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 8920123160578430935, guid: ca28f95b54fc2be4e99af0f4d40333a9, type: 3}
   m_PrefabInstance: {fileID: 4213473058763571068}
   m_PrefabAsset: {fileID: 0}
 --- !u!95 &5007057934169316126 stripped

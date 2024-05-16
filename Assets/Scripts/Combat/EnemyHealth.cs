@@ -14,6 +14,10 @@ public class EnemyHealth : MonoBehaviour
     public TextMeshProUGUI healthText;
     private float timer = 0;
     private float damageDebounce = 0.25f;
+    public ParticleSystem bone;
+    public MeshRenderer EnemyModel;
+    public GameObject HealthBar;
+    public bool dead = false;
 
     private void Start()
     {
@@ -28,8 +32,14 @@ public class EnemyHealth : MonoBehaviour
         slider.value = Health;
         if (Health <= 0)
         {
-            //Play animation or effect here
-            Invoke(nameof(destroyEnemy), 0.15f);
+            if (!dead)
+            {
+                EnemyModel.enabled = false;
+                HealthBar.SetActive(false);
+                bone.Play();
+                dead = true;
+            }
+            Invoke(nameof(destroyEnemy), 01.5f);
         }
 
         timer -= 1 * Time.deltaTime;
