@@ -13,11 +13,7 @@ public class PlayerHealth : MonoBehaviour
     public Animator screen;
     public GameObject GameOverScreen;
     private GameObject[] Enemies;
-
-    private void Start()
-    {
-        
-    }
+    public GameObject[] Lives;
 
     // Update is called once per frame
     void Update()
@@ -45,6 +41,7 @@ public class PlayerHealth : MonoBehaviour
             playerHealth--;
             invincible = true;
             timer = damageCooldown;
+            Lives[playerHealth].SetActive(false);
         }
     }
 
@@ -54,6 +51,15 @@ public class PlayerHealth : MonoBehaviour
         foreach (var e in Enemies)
         {
             Destroy(e);
+        }
+    }
+
+    public void killPlayer()
+    {
+        playerHealth = 0;
+        foreach (var i in Lives)
+        {
+          i.SetActive(false);  
         }
     }
 }

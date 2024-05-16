@@ -39,7 +39,7 @@ public class PlayerMovement : MonoBehaviour
     public AudioSource landingEffect;
 
     [Header("UI References")] 
-    public TextMeshProUGUI speed;
+    public GameObject dial;
     public Camera cam;
     private float horizontalInput;
     private float verticalInput;
@@ -213,7 +213,8 @@ public class PlayerMovement : MonoBehaviour
 
     private void UpdateUI()
     {
-        speed.text = $"Speed: {Mathf.Ceil(flatVel.magnitude)} / {maxSpeed}";
+        //speed.text = $"Speed: {Mathf.Ceil(flatVel.magnitude)} / {maxSpeed}";
+        dial.transform.rotation = Quaternion.Euler(0,0,(45 -  (Mathf.Ceil(flatVel.magnitude) * 2.5f)));
     }
 
     private void Jump()
