@@ -59,6 +59,10 @@ public class Swinging : MonoBehaviour
         RaycastHit hit;
         if (Physics.Raycast(cam.position, cam.forward, out hit, maxSwingDistance))
         {
+            if (hit.transform.gameObject.layer == 8)
+            {
+                return;
+            }
             swingPoint = hit.point;
             swingingSound.Play();
             currKunai = Instantiate(kunai, swingPoint, Quaternion.LookRotation(cam.forward));
