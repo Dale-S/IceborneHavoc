@@ -50,6 +50,7 @@ public class PlayerMovement : MonoBehaviour
     public MovementState state;
     public Animator hammerAnim;
     public PlayerAttack PA;
+    public PlayerHealth PH;
 
     public enum MovementState
     {
@@ -67,6 +68,10 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
+        if (PH.dead)
+        {
+            return;
+        }
         grounded = Physics.Raycast(transform.position, Vector3.down, playerHeight * 0.5f + 0.2f, ground);
         
         StateHandler();
