@@ -78,6 +78,7 @@ public class PlayerAttack : MonoBehaviour
     {
         hammerAnim.Play("Idle");
         inAttack = false;
+        attacking = false;
     }
     private void backToHeadIdle()
     {

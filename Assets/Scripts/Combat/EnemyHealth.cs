@@ -17,6 +17,7 @@ public class EnemyHealth : MonoBehaviour
     public ParticleSystem bone;
     public MeshRenderer EnemyModel;
     public GameObject HealthBar;
+    public BoxCollider EnemyCollider;
     public bool dead = false;
 
     private void Start()
@@ -35,6 +36,7 @@ public class EnemyHealth : MonoBehaviour
             if (!dead)
             {
                 EnemyModel.enabled = false;
+                EnemyCollider.enabled = false;
                 HealthBar.SetActive(false);
                 bone.Play();
                 dead = true;

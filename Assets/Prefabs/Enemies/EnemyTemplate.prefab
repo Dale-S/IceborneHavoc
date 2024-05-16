@@ -765,6 +765,7 @@ MonoBehaviour:
   bone: {fileID: 7504662259935856706}
   EnemyModel: {fileID: 8399775175704947486}
   HealthBar: {fileID: 1282901724452621311}
+  EnemyCollider: {fileID: 2650200232141154764}
   dead: 0
 --- !u!114 &5751049384489972941
 MonoBehaviour:
