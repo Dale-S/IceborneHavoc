@@ -52,7 +52,11 @@ MonoBehaviour:
   dead: 0
   screen: {fileID: 8606117129704652367}
   GameOverScreen: {fileID: 1733507212584080307}
-  Lives: []
+  Lives:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  UI: {fileID: 5430564047968909178, guid: e2be4db8b5a40724b8fd12133b981674, type: 3}
 --- !u!1 &889501400750729189
 GameObject:
   m_ObjectHideFlags: 0
@@ -248,7 +252,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 7510090658147689259}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 4924581075117426075}
+        m_TargetAssemblyTypeName: LevelHandler, Assembly-CSharp
+        m_MethodName: RestartLevel
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1696287204314974728
 GameObject:
   m_ObjectHideFlags: 0
@@ -369,7 +385,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 5008063696058644382}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 4924581075117426075}
+        m_TargetAssemblyTypeName: LevelHandler, Assembly-CSharp
+        m_MethodName: MainMenu
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1733507212584080307
 GameObject:
   m_ObjectHideFlags: 0
@@ -383,6 +411,7 @@ GameObject:
   - component: {fileID: 708835165405331838}
   - component: {fileID: 1161139835121200142}
   - component: {fileID: 8606117129704652367}
+  - component: {fileID: 4924581075117426075}
   m_Layer: 0
   m_Name: GameOverScreen
   m_TagString: Untagged
@@ -499,6 +528,18 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &4924581075117426075
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1733507212584080307}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59bf604a9188a0044a496d8474812f38, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2249952098436987693
 GameObject:
   m_ObjectHideFlags: 0
