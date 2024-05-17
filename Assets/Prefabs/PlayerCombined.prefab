@@ -47,11 +47,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c31f0f0e12604ca40a26647b986b1b72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerHealth: 0
+  playerHealth: 3
   damageCooldown: 2
   dead: 0
   screen: {fileID: 8606117129704652367}
   GameOverScreen: {fileID: 1733507212584080307}
+  Lives: []
 --- !u!1 &889501400750729189
 GameObject:
   m_ObjectHideFlags: 0
@@ -388,7 +389,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &5816231980560120517
 RectTransform:
   m_ObjectHideFlags: 0
