@@ -760,7 +760,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d448898ced064f0469fedf005a2af527, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Health: 30
+  Health: 50
   slider: {fileID: 1291807234626029787}
   healthText: {fileID: 8935340961421018928}
   bone: {fileID: 7504662259935856706}
