@@ -30,4 +30,9 @@ public class Timer : MonoBehaviour
         startTimer = false;
         HighScore = currTime;
     }
+
+    public string DisplayHighScore()
+    {
+        return ($"{Mathf.Floor(HighScore / 600)}{Mathf.Floor(HighScore / 60) % 10}:{Mathf.Floor(HighScore / 10) % 6}{Mathf.Floor(HighScore) % 10}");
+    }
 }

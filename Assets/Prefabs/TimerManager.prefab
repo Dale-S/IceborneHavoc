@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7593503950609839157}
   - component: {fileID: 2358549419198546137}
   - component: {fileID: 4130044671495350524}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: TimerStart
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -88,7 +88,7 @@ GameObject:
   - component: {fileID: 733295407612355489}
   - component: {fileID: 2417542050577582964}
   - component: {fileID: 5905285647026818678}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: TimerEnd
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -152,6 +152,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   T: {fileID: 0}
+  EndScreen: {fileID: 0}
 --- !u!1 &7884787696199642838
 GameObject:
   m_ObjectHideFlags: 0
@@ -161,7 +162,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3282442092879003742}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: TimerManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
