@@ -11,7 +11,7 @@ public class SpawnerScript : MonoBehaviour
     public int[] numOfType;
     public Transform enemySpawn;
     private bool enemySpawned = false;
-    private float timeToSpawn = 10;
+    private float timeToSpawn = 4;
     private float timer = 0;
     private int i = 0;
     private int numToSpawn = 0;
