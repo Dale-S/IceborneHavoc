@@ -15,6 +15,12 @@ public class LevelHandler : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
+    public void NextLevel()
+    {
+        Debug.Log("Button Clicked");
+        SceneManager.LoadScene(2);
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.name == "Body")

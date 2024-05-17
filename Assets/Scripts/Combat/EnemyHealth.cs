@@ -19,9 +19,11 @@ public class EnemyHealth : MonoBehaviour
     public GameObject HealthBar;
     public BoxCollider EnemyCollider;
     public bool dead = false;
+    private GameObject tracker;
 
     private void Start()
     {
+        tracker = GameObject.Find("bonewall");
         MaxHealth = Health;
         slider.maxValue = Health;
         healthText.text = $"{Mathf.RoundToInt(Health)} / {Mathf.RoundToInt(MaxHealth)}";
@@ -35,6 +37,7 @@ public class EnemyHealth : MonoBehaviour
         {
             if (!dead)
             {
+                tracker.GetComponent<EnemyTracking>().left--;
                 EnemyModel.enabled = false;
                 EnemyCollider.enabled = false;
                 HealthBar.SetActive(false);
