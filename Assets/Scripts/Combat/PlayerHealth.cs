@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO.Compression;
 using UnityEngine;
 
 public class PlayerHealth : MonoBehaviour
@@ -14,12 +15,16 @@ public class PlayerHealth : MonoBehaviour
     public GameObject GameOverScreen;
     private GameObject[] Enemies;
     public GameObject[] Lives;
+    public GameObject UI;
+    
 
     // Update is called once per frame
     void Update()
     {
         if (playerHealth == 0)
         {
+            Cursor.lockState = CursorLockMode.Confined;
+            Cursor.visible = true;
             GameOverScreen.SetActive(true);
             dead = true;
             screen.Play("GameOverAnimation");
