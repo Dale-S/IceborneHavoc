@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Spear
   - SpearDetector
+  - Enemy
   layers:
   - Default
   - TransparentFX
@@ -14,8 +15,8 @@ TagManager:
   - Water
   - UI
   - Ground
-  - 
-  - 
+  - Player
+  - NoGrapple
   - 
   - 
   - 

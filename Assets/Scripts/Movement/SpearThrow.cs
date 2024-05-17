@@ -58,8 +58,10 @@ public class SpearThrow : MonoBehaviour
         GameObject temp = Instantiate(spear, spearStart.position, tempRot);
         GameObject tempSpear = spears[spot];
         spears[spot] = temp;
-        //rb.AddForce(bodyTransform.forward * -2f, ForceMode.Impulse);
-        Destroy(tempSpear, 0.25f); // Time here can be adjusted for animations
+        if (tempSpear != null)
+        {
+            tempSpear.GetComponent<SpearForward>().spearEffect();
+        }
     }
 }
 
