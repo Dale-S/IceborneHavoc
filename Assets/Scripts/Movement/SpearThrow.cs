@@ -58,7 +58,10 @@ public class SpearThrow : MonoBehaviour
         GameObject temp = Instantiate(spear, spearStart.position, tempRot);
         GameObject tempSpear = spears[spot];
         spears[spot] = temp;
-        tempSpear.GetComponent<SpearForward>().spearEffect();
+        if (tempSpear != null)
+        {
+            tempSpear.GetComponent<SpearForward>().spearEffect();
+        }
     }
 }
 
